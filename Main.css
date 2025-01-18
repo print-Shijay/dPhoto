@@ -140,6 +140,10 @@ footer {
     color: var(--second-bg-color);
 }
 
+#info {
+    background-color: var(--second-bg-color);
+}
+
 #container3D{
     position: fixed;
     inset: 0;

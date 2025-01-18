@@ -4,7 +4,7 @@ import { gsap } from 'https://cdn.skypack.dev/gsap';
 
 const camera = new THREE.PerspectiveCamera(
     10,
-    window.innerWidth / window.innerHeight,
+    window.innerWidth / window.innerHeight ,
     0.1,
     1000
 );
@@ -18,10 +18,17 @@ loader.load('/resourcess/panasonic_nv-gs5en_dv-camcordercamera.glb',
     function (gltf) {
         bee = gltf.scene;
         scene.add(bee);
+        bee.position.x = -0.3;
+        bee.position.y = -0.3;
+        bee.position.z = 8;
 
-        mixer = new THREE.AnimationMixer(bee);
+        bee.rotation.x = 0;
+        bee.rotation.y = 4.2;
+        bee.rotation.z = 0;
+
+        mixer  = new THREE.AnimationMixer(bee);
         mixer.clipAction(gltf.animations[0]).play();
-        modelMove();
+        
     },
     function (xhr) {},
     function (error) {}
@@ -45,3 +52,63 @@ const reRender3D = () => {
     if(mixer) mixer.update(0.02);
 };
 reRender3D();
+
+let arrPositionModel = [
+    {
+        id: 'home',
+        position: {x: 0.4, y: -0.3, z: 8},
+        rotation: {x: 0, y: 0, z: 0}
+    },
+    {
+        id: "info",
+        position: { x: -1, y: 0, z: 5 },
+        rotation: { x: 1, y: 1, z: -0.5 },
+    },
+    {
+        id: "contact",
+        position: { x: -0.3, y: -0.3, z: 8 },
+        rotation: { x: 0, y: 4.2, z: 0 },
+    },
+    
+];
+
+const modelMove = () => {
+    const sections = document.querySelectorAll('.home');
+    let currentSection;
+    sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 3) {
+            currentSection = section.id;
+        }
+    });
+    let position_active = arrPositionModel.findIndex(
+        (val) => val.id == currentSection
+    );
+    if (position_active >= 0) {
+        let new_coordinates = arrPositionModel[position_active];
+        gsap.to(bee.position, {
+            x: new_coordinates.position.x,
+            y: new_coordinates.position.y,
+            z: new_coordinates.position.z,
+            duration: 3,
+            ease: "power1.out"
+        });
+        gsap.to(bee.rotation, {
+            x: new_coordinates.rotation.x,
+            y: new_coordinates.rotation.y,
+            z: new_coordinates.rotation.z,
+            duration: 3,
+            ease: "power1.out"
+        })
+    }
+}
+window.addEventListener('scroll', () => {
+    if (bee) {
+        modelMove();
+    }
+})
+window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+})
