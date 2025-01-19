@@ -14,13 +14,13 @@ const scene = new THREE.Scene();
 let bee;
 let mixer;
 const loader = new GLTFLoader();
-loader.load('/resourcess/panasonic_nv-gs5en_dv-camcordercamera.glb',
+loader.load('/resourcess/pixel_polaroid_camera.glb',
     function (gltf) {
         bee = gltf.scene;
         scene.add(bee);
-        bee.position.x = 0.4;
-        bee.position.y = -0.3;
-        bee.position.z = 8;
+        bee.position.x = 0;
+        bee.position.y = -1;
+        bee.position.z = -3;
 
         mixer  = new THREE.AnimationMixer(bee);
         mixer.clipAction(gltf.animations[0]).play();
@@ -43,6 +43,12 @@ scene.add(topLight);
 
 
 const reRender3D = () => {
+
+    if (bee) {
+        bee.rotation.y += 0.005; // Adjust rotation speed as needed  
+    }
+
+
     requestAnimationFrame(reRender3D);
     renderer.render(scene, camera);
     if(mixer) mixer.update(0.02);
@@ -52,17 +58,17 @@ reRender3D();
 let arrPositionModel = [
     {
         id: 'home',
-        position: {x: 0.4, y: -0.3, z: 8},
+        position: {x: 0, y: -1, z: -3},
         rotation: {x: 0, y: 0, z: 0}
     },
     {
         id: "info",
-        position: { x: -1, y: 0, z: 5 },
+        position: { x: -2.5, y: -0.5, z: -8 },
         rotation: { x: 1, y: 1, z: -0.5 },
     },
     {
         id: "contact",
-        position: { x: -0.3, y: -0.3, z: 8 },
+        position: { x: -1.5, y: -0.5, z: -3 },
         rotation: { x: 0, y: 4.2, z: 0 },
     },
     

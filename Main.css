@@ -13,7 +13,7 @@
 
 :root {
 
-    --bg-color: #ebf5ff;
+    --bg-color: #e5cba2;
     --second-bg-color: #333;
     --text-color: rgb(0, 0, 0);
     --main-color: #007bff; 
@@ -90,14 +90,17 @@ body {
 section {
     min-height: 70vh;
     padding: 10rem 9% 2rem;
+    
 }
 
 .home{
     display: flex;
+    position: relative;
     align-items: center;
     height: 100vh;
     padding: 0 0%;
     background: var(--bg-color);
+    overflow: hidden;
 }
 
 
@@ -155,7 +158,6 @@ footer {
     inset: 0;
     z-index: 100;
     pointer-events: none;
-
 }
 
 
@@ -208,4 +210,61 @@ footer {
 .info{
     height: 75vh;
     background-color: var(--bg-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+.parallax {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('/resourcess/9.png') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+    
+}
+
+.parallax  h1{
+    position: absolute;
+    font-size: 5em;
+    text-align: center;
+    text-shadow: 2px 4px 5px #67c8ce;
+    max-width: 20vw;
+    transform: translateY(-4vw);
+}
+
+.parallax img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    
+}
+
+#sand2{
+    transform: translateY(10vh);
+}
+
+#sand{
+    position: fixed;
+}
+
+#tree2-left {
+    position: fixed;
+}
+
+#tree3-right {
+    position: fixed;
 }
