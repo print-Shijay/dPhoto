@@ -88,21 +88,29 @@ body {
 
 
 section {
-    min-height: 100vh;
+    min-height: 70vh;
     padding: 10rem 9% 2rem;
 }
 
 .home{
     display: flex;
     align-items: center;
-    padding: 0 9%;
+    height: 100vh;
+    padding: 0 0%;
     background: var(--bg-color);
 }
 
 
-.home-content {
-    max-width: 60rem;
+.home-content{
+    max-width: 90rem;
     z-index: 99;
+    
+}
+
+.home-content .content {
+    max-width: 90rem;
+    z-index: 99;
+    padding-left: 20%;
 }
 
 .home-content h1 {
@@ -140,9 +148,7 @@ footer {
     color: var(--second-bg-color);
 }
 
-#info {
-    background-color: var(--second-bg-color);
-}
+
 
 #container3D{
     position: fixed;
@@ -150,4 +156,56 @@ footer {
     z-index: 100;
     pointer-events: none;
 
+}
+
+
+
+.spacer {
+    aspect-ratio: 960/200;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer1 {
+    background-image: url('./resourcess/wave1.svg');
+}
+
+
+.wave {
+ 
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(119% + 1.3px);
+    height: 177px;
+}
+
+.wave .shape-fill {
+    fill: var(--bg-color);
+}
+
+.contact{
+    flex-direction: column;
+}
+
+
+#contact{
+    background-color: var(--second-bg-color);
+}
+
+.info-content{
+    width: 100%;
+}
+
+.info{
+    height: 75vh;
+    background-color: var(--bg-color);
 }

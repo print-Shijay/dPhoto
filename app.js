@@ -18,13 +18,9 @@ loader.load('/resourcess/panasonic_nv-gs5en_dv-camcordercamera.glb',
     function (gltf) {
         bee = gltf.scene;
         scene.add(bee);
-        bee.position.x = -0.3;
+        bee.position.x = 0.4;
         bee.position.y = -0.3;
         bee.position.z = 8;
-
-        bee.rotation.x = 0;
-        bee.rotation.y = 4.2;
-        bee.rotation.z = 0;
 
         mixer  = new THREE.AnimationMixer(bee);
         mixer.clipAction(gltf.animations[0]).play();
