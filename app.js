@@ -63,7 +63,7 @@ let arrPositionModel = [
     },
     {
         id: "info",
-        position: { x: -2.5, y: -0.5, z: -8 },
+        position: { x: 0, y: -0.3, z: -8 },
         rotation: { x: 1, y: 1, z: -0.5 },
     },
     {
@@ -114,3 +114,5 @@ window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 })
+
+
