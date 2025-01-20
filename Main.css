@@ -158,7 +158,7 @@ footer {
 
 
 #container3D{
-    position: fixed;
+    position: absolute;
     inset: 0;
     
     pointer-events: none;
@@ -235,13 +235,9 @@ footer {
 
 .parallax {
     position: relative;
-    display: flex;
+    min-height: 100vh;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('/resourcess/bg.svg') no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    
     overflow: hidden;
     
 }
@@ -451,6 +447,19 @@ footer {
 }
 
 
+
+#bg_city{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    
+}
+
+#bg_city svg{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+}
 
 
     
