@@ -95,7 +95,7 @@ section {
 
 .home{
     display: flex;
-    
+    z-index: 2;
     align-items: center;
     height: 100vh;
     padding: 0 0%;
@@ -104,7 +104,7 @@ section {
 }
 
 #info{
-    position: relative;
+    
 }
 
 
@@ -185,6 +185,7 @@ footer {
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    z-index: 4;
 }
 
 .wave svg {
@@ -212,8 +213,14 @@ footer {
 }
 
 .info{
-    
+    height: 400vh;
+    position: relative;
     background-color: var(--bg-color);
+    
+}
+
+#info2{
+    background-color: rebeccapurple;
 }
 
 
@@ -232,7 +239,7 @@ footer {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('/resourcess/bg.png') no-repeat;
+    background: url('/resourcess/bg.svg') no-repeat;
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
@@ -281,7 +288,7 @@ footer {
 
 .banner{
     width: 100%;
-    height: 100vh;
+    height: 200vh;
     text-align: center;
     overflow: hidden;
     position: relative;
@@ -290,12 +297,13 @@ footer {
     position: absolute;
     width: 200px;
     height: 250px;
-    top: 10%;
+    top: 30%;
     left: calc(50% - 100px);
     transform-style: preserve-3d;
     transform: perspective(1000px);
     animation: autoRun 20s linear infinite;
     z-index: 2;
+    opacity: 1;
 }
 @keyframes autoRun{
     from{
@@ -319,9 +327,10 @@ footer {
 }
 
 .banner .content{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 50%;
+    top: 60%;
     transform: translateX(-50%);
     width: min(1400px, 100vw);
     height: max-content;
@@ -330,7 +339,9 @@ footer {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: -1;
+    opacity: 0;
+    transition: top 0.5s ease-in-out;
 }
 .banner .content h1{
     font-family: 'ICA Rubrik';
@@ -344,7 +355,7 @@ footer {
     inset: 0 0 0 0;
     content: attr(data-content);
     z-index: 2;
-    -webkit-text-stroke: 2px #d2d2d2;
+    -webkit-text-stroke: 2px #7a7373;
     color: transparent;
 }
 .banner .content .author{
@@ -355,19 +366,96 @@ footer {
 .banner .content h2{
     font-size: 3em;
 }
-.banner .content .model{
+.model {
     background-image: url('resourcess/cpuple-Photoroom.png');
     width: 100%;
     height: 75vh;
-    position: absolute;
     bottom: 0;
     left: 0;
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 1;
-    
+    position: fixed;
+    pointer-events: none;
 }
+
+.info .info-content .text1, .text2{
+    padding: 10rem;
+}
+
+.info .info-content .text1, .text2 h1{
+    font-size: 4rem;
+    color: var(--second-bg-color);
+}
+
+.info .info-content .text1, .text2 p{
+    font-size: 2rem;
+    color: var(--second-bg-color);
+}
+
+.hidden {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .text1, .text2 {
+    width: 100%;
+  }
+  
+  .text1 {
+    text-align: left;
+    direction: ltr; 
+  }
+  
+  .text2 {
+    text-align: right;
+    direction: rtl; 
+  }
+
+
+.animate{
+    transition: 1s;
+}
+
+.text1 .animate{
+    transform: translateX(-100%);
+}
+
+.text1.show-animate .animate{
+    transform: translateX(0);
+}
+
+
+
+.text2 .animate{
+    transform: translateX(100%);
+}
+
+.text2.show-animate .animate{
+    transform: translateX(0);
+}
+
+
+
+.slider .animate{
+    transform: scale(0);
+    transition: 2s;
+}
+
+.slider.show-animate .animate{
+    transform: scale(.5);
+}
+
+
+
+
+    
+    
+
 @media screen and (max-width: 1023px) {
     .banner .slider{
         width: 160px;
